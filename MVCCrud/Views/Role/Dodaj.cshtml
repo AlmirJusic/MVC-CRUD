@@ -1,0 +1,36 @@
+﻿@model RoleDodajVM;
+
+@{
+    if(Model.Role_ID==0)
+    {
+        ViewData["Title"] = "Dodavanje rola";
+    }
+    else
+    {
+        ViewData["Title"] = "Editovanje rola";
+    }
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="text-left">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-info btn-sm">Menu</a>
+            </th>
+        </tr>
+    </thead>
+</table>
+
+<h3>@ViewData["Title"]</h3>
+
+<form asp-action="Snimi" method="post">
+    @Html.HiddenFor(s => s.Role_ID)
+    <div class="form-group">
+        <label>Naziv role</label>
+        <input type="text" asp-for="NameRole" class="form-control" />
+        <span asp-validation-for="NameRole" class="text-danger"></span>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
